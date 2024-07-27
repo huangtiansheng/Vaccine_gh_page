@@ -29,7 +29,7 @@ The new paradigm of finetuning-as-a-service introduces a new attack surface for 
 ## Harmful fine-tuning issue
 
 <p align="middle">
-  <img src="static/image/illustration.png" width="600" />
+  <img src="static/image/illustration.png" width="800" />
 </p>
 
 The figure demonstrate the risk for fine-tuning-as-a-service business model. At the first stage of the service pipeline, the model is safety aligned with safety alignment data. At the second stage, users upload data for service provider to finetune, and the service provider finetune model on user data to deliver custoomized service. However, the user data may contain harmful demonstration data that may subverts the previous enforced alignment. Finetuning on this partially harmful data and deploy the alignment-broken fine-tuned model may cause serious ethical and governance concern.    
@@ -39,7 +39,7 @@ The figure demonstrate the risk for fine-tuning-as-a-service business model. At 
 
 ## Harmful Embedding Drift
 <p align="middle">
-  <img src="static/image/harmful drift.png" width="600" />
+  <img src="static/image/harmful drift.png" width="800" />
 </p>
 
 
@@ -53,7 +53,7 @@ embedding of the aligned model (or pre-trained model for Non-aligned) and that o
 ## Vaccine: perturbation-aware alignment 
 Inspired by the above observation, we try improve the aligned model's immunization to the harmful embedding drift. To achieve this goal, we try to solve this problem in the alignment stage:
 <p align="middle">
-  <img src="static/image/vaccine_problem.png" width="600" />
+  <img src="static/image/vaccine_problem.png" width="800" />
 </p>
 where $\tilde{\bm f}_{\bm w_l, \bm \epsilon_l}(\bm e_{l-1})$ is the $l$-th layer in a LLM that maps the input to a perturbed embedding and $\mathcal{T}(\bm x_i)$ is the tokenizer function that produces embedding $\bm e_{i,0}$.  In the inner maximization function, we aim to find the perturbation $\bm \epsilon \in \mathbb{R}^d$ over each layer's hidden embedding that maximizes the loss over alignment data. To formulate a meaningful perturbation, we constrain the perturbation to be L2-norm bounded by intensity $\rho$.  In the outer minimization, we optimize the model weights that can withstand such an adversarial perturbation, such that the model is robust to the real harmful perturbation that might be introduced in the later user finetuning stage.  
 
