@@ -27,7 +27,7 @@ The new paradigm of finetuning-as-a-service introduces a new attack surface for 
 ---
 
 <p align="middle">
-  <img src="static/image/illustration.pdf" width="500" />
+  <img src="static/image/illustration.png" width="500" />
 </p>
 
 
