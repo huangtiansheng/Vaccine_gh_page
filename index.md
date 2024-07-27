@@ -38,13 +38,32 @@ The figure demonstrate the risk for fine-tuning-as-a-service business model. At 
 
 
 ## Harmful Embedding Drift
-1. We analyze existing VLLMs and underpinning LLMs and show how popular VLM instruction-following protocols make VLLMs substantially more susceptible to jailbreak attacks than the corresponding LLMs.
-2. To the best of our knowledge, we build the first safety fine-tuning dataset VLGuard for VLLMs. VLGuard also comes with a test suite for evaluation.
-3. We propose two strategies for VLLM safety alignment: post-hoc and mixed fine-tuning. Experimental results with state-of-the-art open-source VLLMs show that our fine-tuning strategy and data significantly reduce the initial safety risks and also add robustness to several black-box attacks while not hurting helpfulness.
+<p align="middle">
+  <img src="static/image/harmful drift.png" width="600" />
+</p>
+
+
+1. Figure (a) shows that for the model produced by vanilla scheme (SFT), the alignment loss is increased when the harmful ratio becomes larger. This partially explains
+that the model is less aligned to the alignment data afterfinetuning on more harmful user data, i.e., it starts to forget the alignment knowledge.
+2. To futher analyze the cause of forgetting, the left of Figure (b) shows the statisitc of alignment loss. Here alignment loss refers to the loss over the alignment data. The left of Figure (b) indicate that  alignment loss is increased with larger harmful ratio, with the same trend of the harmful score. 
+3. To futher analyze the cuase of increase alignment loss, the right of Figure (b)  show the statisitc of  embedding drift.  Embedding drift refers to the L2 norm of the difference between the hidden
+embedding of the aligned model (or pre-trained model for Non-aligned) and that of the finetuned model over the same alignment data. The result show a similar increase trend of embedding drift, which seems to indicate that the the embedding drift cause by the harmful data is the cause of increase alignment loss, and subsequently leading to the increase of harmful score. 
+
+
+## Vaccine: perturbation-aware alignment 
+Inspired by the above observation, we try improve the aligned model's immunization to the harmful embedding drift. To achieve this goal, we try to solve this problem in the alignment stage:
+<p align="middle">
+  <img src="static/image/vaccine_problem.png" width="600" />
+</p>
+where $\tilde{\bm f}_{\bm w_l, \bm \epsilon_l}(\bm e_{l-1})$ is the $l$-th layer in a LLM that maps the input to a perturbed embedding and $\mathcal{T}(\bm x_i)$ is the tokenizer function that produces embedding $\bm e_{i,0}$.  In the inner maximization function, we aim to find the perturbation $\bm \epsilon \in \mathbb{R}^d$ over each layer's hidden embedding that maximizes the loss over alignment data. To formulate a meaningful perturbation, we constrain the perturbation to be L2-norm bounded by intensity $\rho$.  In the outer minimization, we optimize the model weights that can withstand such an adversarial perturbation, such that the model is robust to the real harmful perturbation that might be introduced in the later user finetuning stage.  
+
+
+
+
 
 
 ## Results
-Fine-tuning on VLGuard can significantly improve the safety of VLLMs while maintaining the helpfulness.
+Vaccine can significantly reduce the impact of harmful fine-tuning while still able to learn the knowledge of the customized task. 
 
 ### Quantitative Results
 ![Result](static/image/harmful_ratio.png)
