@@ -43,11 +43,10 @@ The figure demonstrate the risk for fine-tuning-as-a-service business model. At 
 </p>
 
 
-1. Figure (a) shows that for the model produced by vanilla scheme (SFT), the alignment loss is increased when the harmful ratio becomes larger. This partially explains
-that the model is less aligned to the alignment data afterfinetuning on more harmful user data, i.e., it starts to forget the alignment knowledge.
-2. To futher analyze the cause of forgetting, the left of Figure (b) shows the statisitc of alignment loss. Here alignment loss refers to the loss over the alignment data. The left of Figure (b) indicate that  alignment loss is increased with larger harmful ratio, with the same trend of the harmful score. 
-3. To futher analyze the cuase of increase alignment loss, the right of Figure (b)  show the statisitc of  embedding drift.  Embedding drift refers to the L2 norm of the difference between the hidden
-embedding of the aligned model (or pre-trained model for Non-aligned) and that of the finetuned model over the same alignment data. The result show a similar increase trend of embedding drift, which seems to indicate that the the embedding drift cause by the harmful data is the cause of increase alignment loss, and subsequently leading to the increase of harmful score. 
+1. **Harmful Score**. Figure (a) shows that for the model produced by vanilla scheme (SFT), the alignment loss is increased when the harmful ratio becomes larger. This partially explains
+that the model is less aligned to the alignment data after finetuning on more harmful user data, i.e., it starts to forget the alignment knowledge.
+2. **Alignment loss**. To futher analyze the cause of forgetting, the left of Figure (b) shows the statisitc of alignment loss. Here alignment loss refers to the loss over the alignment data. The left of Figure (b) indicate that  alignment loss is increased with larger harmful ratio, with the same trend of the harmful score. 
+3. **Harmful embedding drift**. To futher analyze the cuase of increase alignment loss, the right of Figure (b)  show the statisitc of embedding drift in different harmful ratio.  Embedding drift refers to the L2 norm of the difference between the hidden embedding of the aligned model (or pre-trained model for Non-aligned) and that of the finetuned model over the same alignment data. The result show a similar increase trend of embedding drift, which seems to indicate that the the embedding drift cause by the harmful data is the cause of increase alignment loss, and subsequently leading to the increase of harmful score. 
 
 
 ## Vaccine: perturbation-aware alignment 
