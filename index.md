@@ -2,26 +2,24 @@
 layout: project_page
 permalink: /
 
-title:  "Safety Fine-Tuning at (Almost) No Cost: A Baseline for Vision Large Language Models"
+title:  "Vaccine: Perturbation-aware Alignment for Large Language Model"
 authors:
-  - "Yongshuo Zong, "
-  - "Ondrej Bohdal, "
-  - "Tingyang Yu, "
-  - "Yongxin Yang, "
-  - "Timothy Hospedales"
+  - "Tiansheng Huang, "
+  - "Sihao Hu, "
+  - "Ling Liu "
+
 affiliations:
-  - "University of Edinburgh, "
-  - "EPFL"
-paper: https://arxiv.org/abs/2402.02207
-code: https://github.com/ys-zong/VLGuard
-data: https://huggingface.co/datasets/ys-zong/VLGuard
+  - "Georgia Institute of Technology"
+paper: https://arxiv.org/abs/2402.01109
+code: https://github.com/git-disl/Vaccine
+data: https://huggingface.co/datasets/anonymous4486/alignment_data
 ---
 
 <div class="columns is-centered has-text-centered">
     <div class="column is-four-fifths">
         <h2>Abstract</h2>
         <div class="content has-text-justified">
-Current vision large language models (VLLMs) exhibit remarkable capabilities yet are prone to generate harmful content and are vulnerable to even the simplest jailbreaking attacks. Our initial analysis finds that this is due to the presence of harmful data during vision-language instruction fine-tuning, and that VLLM fine-tuning can cause forgetting of safety alignment previously learned by the underpinning LLM. To address this issue, we first curate a vision-language safe instruction-following dataset~\dataset~covering various harmful categories. Our experiments demonstrate that integrating this dataset into standard vision-language fine-tuning or utilizing it for post-hoc fine-tuning effectively safety aligns VLLMs.  This alignment is achieved with minimal impact on, or even enhancement of, the models' helpfulness. The versatility of our safety fine-tuning dataset makes it a valuable resource for safety-testing existing VLLMs, training new models or safeguarding pre-trained VLLMs. Empirical results demonstrate that fine-tuned VLLMs effectively reject unsafe instructions and substantially reduce the success rates of several black-box adversarial attacks, which approach zero in many cases.
+The new paradigm of finetuning-as-a-service introduces a new attack surface for Large Language Models (LLMs): a few harmful data uploaded by users can easily trick the finetuning to produce an alignment-broken model. We conduct an empirical analysis and uncover a \textit{harmful embedding drift} phenomenon, showing a probable cause of the alignment-broken effect. Inspired by our findings, we propose Vaccine, a perturbation-aware alignment technique to mitigate the security risk of users  finetuning. The core idea of Vaccine is to produce invariant hidden embeddings by progressively adding crafted perturbation to them in the alignment phase. This enables the embeddings to withstand harmful perturbation from  un-sanitized user data in the finetuning phase. Our results on open source mainstream LLMs (e.g., Llama2, Opt, Vicuna) demonstrate that Vaccine can boost the robustness of alignment against harmful prompts induced embedding drift while reserving reasoning ability towards benign prompts. 
         </div>
     </div>
 </div>
