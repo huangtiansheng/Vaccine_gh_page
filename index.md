@@ -29,7 +29,7 @@ The new paradigm of finetuning-as-a-service introduces a new attack surface for 
 ## Harmful fine-tuning issue
 
 <p align="middle">
-  <img src="static/image/illustration.png" width="800" />
+  <img src="static/image/illustration.png" width="600" />
 </p>
 
 The figure demonstrate the risk for fine-tuning-as-a-service business model. At the first stage of the service pipeline, the model is safety aligned with safety alignment data. At the second stage, users upload data for service provider to finetune, and the service provider finetune model on user data to deliver custoomized service. However, the user data may contain harmful demonstration data that may subverts the previous enforced alignment. Finetuning on this partially harmful data and deploy the alignment-broken fine-tuned model may cause serious ethical and governance concern.    
@@ -39,7 +39,7 @@ The figure demonstrate the risk for fine-tuning-as-a-service business model. At 
 
 ## Harmful Embedding Drift
 <p align="middle">
-  <img src="static/image/harmful drift.png" width="800" />
+  <img src="static/image/harmful drift.png" width="1000" />
 </p>
 
 
