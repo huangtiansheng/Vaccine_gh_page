@@ -54,7 +54,7 @@ Inspired by the above observation, we try improve the aligned model's immunizati
 <p align="middle">
   <img src="static/image/vaccine_problem.png" width="800" />
 </p>
-where $\tilde{\bm f}_{\bm w_l, \bm \epsilon_l}(\bm e_{l-1})$ is the $l$-th layer in a LLM that maps the input to a perturbed embedding and $\mathcal{T}(\bm x_i)$ is the tokenizer function that produces embedding $\bm e_{i,0}$.  In the inner maximization function, we aim to find the perturbation $\bm \epsilon \in \mathbb{R}^d$ over each layer's hidden embedding that maximizes the loss over alignment data. To formulate a meaningful perturbation, we constrain the perturbation to be L2-norm bounded by intensity $\rho$.  In the outer minimization, we optimize the model weights that can withstand such an adversarial perturbation, such that the model is robust to the real harmful perturbation that might be introduced in the later user finetuning stage.  
+where $\tilde{ f}_{ w_l,  \epsilon_l}( e_{l-1})$ is the $l$-th layer in a LLM that maps the input to a perturbed embedding and $\mathcal{T}(\bm x_i)$ is the tokenizer function that produces embedding $\bm e_{i,0}$.  In the inner maximization function, we aim to find the perturbation $\bm \epsilon \in \mathbb{R}^d$ over each layer's hidden embedding that maximizes the loss over alignment data. To formulate a meaningful perturbation, we constrain the perturbation to be L2-norm bounded by intensity $\rho$.  In the outer minimization, we optimize the model weights that can withstand such an adversarial perturbation, such that the model is robust to the real harmful perturbation that might be introduced in the later user finetuning stage.  
 
 
 
