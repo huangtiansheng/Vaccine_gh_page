@@ -21,9 +21,26 @@
   <script type="text/javascript" async
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
+   <!-- Bulma Carousel CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-carousel/4.0.0/css/bulma-carousel.min.css">
 </head>
 
 <body>
+  <!-- Initialize Bulma Carousel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bulma-carousel/4.0.0/js/bulma-carousel.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (typeof bulmaCarousel !== 'undefined') {
+        bulmaCarousel.attach('.carousel', {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          loop: true,
+        });
+      } else {
+        console.error('bulmaCarousel is not defined.');
+      }
+    });
+  </script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
