@@ -14,9 +14,6 @@ paper: https://arxiv.org/abs/2402.01109
 code: https://github.com/git-disl/Vaccine
 data: https://huggingface.co/datasets/anonymous4486/alignment_data
 ---
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
 
 <div class="columns is-centered has-text-centered">
     <div class="column is-four-fifths">
